@@ -1,0 +1,14 @@
+    <div class="form-widget">
+        
+            {% for image in field.value %}
+                <a href="#" class="easyadmin-lightbox-thumbnail" data-featherlight="#easyadmin-lightbox-{{ image.id }}" data-featherlight-close-on-click="anywhere">
+                    <img src="/uploads/imageservices/{{ image.file }}">
+                </a>
+
+                {# <div id="easyadmin-lightbox-{{ image.id }}" class="easyadmin-lightbox">
+                    <img src="/uploads/imageservices/{{ image.file }}">
+                </div> #}
+            {% endfor %}
+       
+    </div>
+    

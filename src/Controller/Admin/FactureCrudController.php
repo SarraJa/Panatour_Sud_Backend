@@ -12,7 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
 class FactureCrudController extends AbstractCrudController
 {
@@ -29,6 +29,8 @@ class FactureCrudController extends AbstractCrudController
             TextField::new('description'),
             MoneyField::new('prixTotal'),
             DateTimeField::new('CreatedAt'),
+            AssociationField::new('reservation'),
+
             
         ];
     }

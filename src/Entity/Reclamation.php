@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ReclamationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * @ApiResource()
@@ -48,6 +49,18 @@ class Reclamation
      * @ORM\ManyToOne(targetEntity=LieuInteret::class, inversedBy="reclamation")
      */
     private $lieuInteret;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $CreatedAt;
+    public function __construct( )
+    {
+        
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new DateTime('now'));
+        }
+    }
 
     public function getId(): ?int
     {
@@ -122,6 +135,18 @@ class Reclamation
     public function setLieuInteret(?LieuInteret $lieuInteret): self
     {
         $this->lieuInteret = $lieuInteret;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->CreatedAt;
+    }
+
+    public function setCreatedAt(?\DateTimeInterface $CreatedAt): self
+    {
+        $this->CreatedAt = $CreatedAt;
 
         return $this;
     }

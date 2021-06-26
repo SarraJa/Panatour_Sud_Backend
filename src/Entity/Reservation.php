@@ -5,7 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ReservationRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use DateTime;
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=ReservationRepository::class)
@@ -58,6 +58,41 @@ class Reservation
      * @ORM\ManyToOne(targetEntity=ServiceRestauration::class, inversedBy="reservations")
      */
     private $serviceRestauration;
+
+     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nombreChamber;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nombreAdulte;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nombreEnfant;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $checkIn;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $checkOut;
+
+
+    public function __construct( )
+    {
+        
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new DateTime('now'));
+        }
+    }
+
 
     public function getId(): ?int
     {
@@ -166,6 +201,66 @@ class Reservation
     public function setServiceRestauration(?ServiceRestauration $serviceRestauration): self
     {
         $this->serviceRestauration = $serviceRestauration;
+
+        return $this;
+    }
+
+    public function getNombreChamber(): ?int
+    {
+        return $this->nombreChamber;
+    }
+
+    public function setNombreChamber(?int $nombreChamber): self
+    {
+        $this->nombreChamber = $nombreChamber;
+
+        return $this;
+    }
+
+    public function getNombreAdulte(): ?int
+    {
+        return $this->nombreAdulte;
+    }
+
+    public function setNombreAdulte(?int $nombreAdulte): self
+    {
+        $this->nombreAdulte = $nombreAdulte;
+
+        return $this;
+    }
+
+    public function getNombreEnfant(): ?int
+    {
+        return $this->nombreEnfant;
+    }
+
+    public function setNombreEnfant(?int $nombreEnfant): self
+    {
+        $this->nombreEnfant = $nombreEnfant;
+
+        return $this;
+    }
+
+    public function getCheckIn(): ?\DateTimeInterface
+    {
+        return $this->checkIn;
+    }
+
+    public function setCheckIn(?\DateTimeInterface $checkIn): self
+    {
+        $this->checkIn = $checkIn;
+
+        return $this;
+    }
+
+    public function getCheckOut(): ?\DateTimeInterface
+    {
+        return $this->checkOut;
+    }
+
+    public function setCheckOut(?\DateTimeInterface $checkOut): self
+    {
+        $this->checkOut = $checkOut;
 
         return $this;
     }

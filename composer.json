@@ -16,6 +16,7 @@
         "easycorp/easyadmin-bundle": "^3.3",
         "gesdinet/jwt-refresh-token-bundle": "^0.12.0",
         "lexik/jwt-authentication-bundle": "^2.11",
+        "mangopay/php-sdk-v2": "^3.6",
         "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.2",
         "symfony/apache-pack": "^1.0",
@@ -35,7 +36,8 @@
         "symfony/serializer": "5.3.*",
         "symfony/twig-bundle": "5.3.*",
         "symfony/validator": "5.3.*",
-        "symfony/yaml": "5.3.*"
+        "symfony/yaml": "5.3.*",
+        "vich/uploader-bundle": "^1.18"
     },
     "config": {
         "optimize-autoloader": true,

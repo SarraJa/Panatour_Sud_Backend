@@ -7,10 +7,18 @@ use App\Repository\ServiceTransportRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+
 
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=ServiceTransportRepository::class)
+ * @Vich\Uploadable
+ * @ApiFilter(SearchFilter::class, properties={ "adresse": "exact"})
+ * @ApiFilter(SearchFilter::class, properties={ "type": "partial"})
  */
 class ServiceTransport
 {
@@ -56,9 +64,27 @@ class ServiceTransport
      */
     private $reservations;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=LieuInteret::class, inversedBy="ServiceTransport")
+     */
+    private $lieuInteret;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="serviceTransport",cascade={"persist","remove"})
+     */
+    private $images;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
+        
+            
+            if ($this->getCreatedAt() === null) {
+                $this->setCreatedAt(new DateTime('now'));
+            }
+            $this->images = new ArrayCollection();
+       
+    
     }
 
     public function getId(): ?int
@@ -167,4 +193,63 @@ class ServiceTransport
 
         return $this;
     }
+
+    public function __toString() {
+        return $this->libele;
+    }
+
+    public function getLieuInteret(): ?LieuInteret
+    {
+        return $this->lieuInteret;
+    }
+
+    public function setLieuInteret(?LieuInteret $lieuInteret): self
+    {
+        $this->lieuInteret = $lieuInteret;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setServiceTransport($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getServiceTransport() === $this) {
+                $image->setServiceTransport(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param ArrayCollection $images
+     */
+    public function setImages(ArrayCollection $images): void
+    {
+        $this->images = $images;
+    }
+
+    
+
+    
 }
+

@@ -7,10 +7,18 @@ use App\Repository\ServiceRestaurationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+
 
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=ServiceRestaurationRepository::class)
+ * @Vich\Uploadable
+ * @ApiFilter(SearchFilter::class, properties={ "adresse": "partial"})
+ * @ApiFilter(SearchFilter::class, properties={ "type": "partial"})
  */
 class ServiceRestauration
 {
@@ -21,6 +29,7 @@ class ServiceRestauration
      */
     private $id;
 
+      
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -51,9 +60,28 @@ class ServiceRestauration
      */
     private $reservations;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=LieuInteret::class, inversedBy="ServiceRestauration")
+     */
+    private $lieuInteret;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="ServiceRestauration",cascade={"persist","remove"})
+     */
+    public $images;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
+        $this->images = new ArrayCollection();
+      
+            
+            if ($this->getCreatedAt() === null) {
+                $this->setCreatedAt(new DateTime('now'));
+            }
+            $this->images = new ArrayCollection();
+        
+    
     }
 
     public function getId(): ?int
@@ -150,4 +178,63 @@ class ServiceRestauration
 
         return $this;
     }
+    public function __toString() {
+        return $this->libele;
+    }
+
+    public function getLieuInteret(): ?LieuInteret
+    {
+        return $this->lieuInteret;
+    }
+
+    public function setLieuInteret(?LieuInteret $lieuInteret): self
+    {
+        $this->lieuInteret = $lieuInteret;
+
+        return $this;
+    }
+
+   /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+    /**
+     * @param ArrayCollection $images
+     */
+    public function setImages(ArrayCollection $images): void
+    {
+        $this->images = $images;
+    }
+
+   
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setServiceRestauration($this);
+        }
+
+        return $this;
+    }
+
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getServiceRestauration() === $this) {
+                $image->setServiceRestauration(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+   
+    
 }
+

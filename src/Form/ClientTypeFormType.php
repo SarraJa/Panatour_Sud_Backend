@@ -3,23 +3,26 @@
 namespace App\Form;
 
 use App\Entity\Client;
-use App\Repository\UserRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-
-class FormTypeField extends AbstractType
+class ClientTypeFormType extends AbstractType
 {
-
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('username')
-            ->add('nom')
-            ->add('prenom');
+            // ->add('roles')
+            // ->add('password')
+            // ->add('nom')
+            // ->add('prenom')
+            // ->add('dateNaissance')
+            // ->add('CreatedAt')
+            // ->add('numeroCarte')
+            // ->add('numeroTelephone')
+            // ->add('lieuVisite')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

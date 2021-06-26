@@ -6,6 +6,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\FactureRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use DateTime;
+
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=FactureRepository::class)
@@ -38,6 +40,13 @@ class Facture
      * @ORM\OneToOne(targetEntity=Reservation::class, inversedBy="facture", cascade={"persist", "remove"})
      */
     private $reservation;
+    public function __construct( )
+    {
+        
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new DateTime('now'));
+        }
+    }
 
     public function getId(): ?int
     {

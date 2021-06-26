@@ -7,6 +7,7 @@ use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 
 /**
@@ -36,7 +37,7 @@ class Client extends User
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $dateNaissance;
+    public $dateNaissance;
 
     /**
      * @ORM\Column(type="datetime")
@@ -68,20 +69,28 @@ class Client extends User
      */
     private $reclamation;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $mangopayid;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=ServiceHotelier::class, inversedBy="clients")
+     */
+    private $paimentServiceHotelier;
+
     public function __construct()
     {
         $this->lieuVisite = new ArrayCollection();
         $this->reservation = new ArrayCollection();
         $this->reclamation = new ArrayCollection();
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new DateTime('now'));
+        }
+        $this->paimentServiceHotelier = new ArrayCollection();
     }
 
-    // public function onPrePersist()
-    // {
-    //     $this->CreatedAt = new \DateTime("now");
-    // }
-
-
-
+  
     /**  
      * @return mixed   
      */   
@@ -251,6 +260,47 @@ class Client extends User
                 $reclamation->setClient(null);
             }
         }
+
+        return $this;
+    }
+    
+
+    public function __toString() {
+        return $this->username;
+    }
+
+    public function getMangopayid(): ?string
+    {
+        return $this->mangopayid;
+    }
+
+    public function setMangopayid(?string $mangopayid): self
+    {
+        $this->mangopayid = $mangopayid;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ServiceHotelier[]
+     */
+    public function getPaimentServiceHotelier(): Collection
+    {
+        return $this->paimentServiceHotelier;
+    }
+
+    public function addPaimentServiceHotelier(ServiceHotelier $paimentServiceHotelier): self
+    {
+        if (!$this->paimentServiceHotelier->contains($paimentServiceHotelier)) {
+            $this->paimentServiceHotelier[] = $paimentServiceHotelier;
+        }
+
+        return $this;
+    }
+
+    public function removePaimentServiceHotelier(ServiceHotelier $paimentServiceHotelier): self
+    {
+        $this->paimentServiceHotelier->removeElement($paimentServiceHotelier);
 
         return $this;
     }

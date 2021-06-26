@@ -7,6 +7,7 @@ use App\Repository\LieuInteretRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * @ApiResource()
@@ -56,11 +57,33 @@ class LieuInteret
      */
     private $reclamation;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ServiceTransport::class, mappedBy="lieuInteret")
+     */
+    private $ServiceTransport;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ServiceRestauration::class, mappedBy="lieuInteret")
+     */
+    private $ServiceRestauration;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ServiceHotelier::class, mappedBy="lieuInteret")
+     */
+    private $ServiceHotelier;
+
     public function __construct()
     {
         $this->clients = new ArrayCollection();
         $this->reclamation = new ArrayCollection();
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new DateTime('now'));
+        }
+        $this->ServiceTransport = new ArrayCollection();
+        $this->ServiceRestauration = new ArrayCollection();
+        $this->ServiceHotelier = new ArrayCollection();
     }
+    
 
     public function getId(): ?int
     {
@@ -178,6 +201,96 @@ class LieuInteret
             // set the owning side to null (unless already changed)
             if ($reclamation->getLieuInteret() === $this) {
                 $reclamation->setLieuInteret(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ServiceTransport[]
+     */
+    public function getServiceTransport(): Collection
+    {
+        return $this->ServiceTransport;
+    }
+
+    public function addServiceTransport(ServiceTransport $serviceTransport): self
+    {
+        if (!$this->ServiceTransport->contains($serviceTransport)) {
+            $this->ServiceTransport[] = $serviceTransport;
+            $serviceTransport->setLieuInteret($this);
+        }
+
+        return $this;
+    }
+
+    public function removeServiceTransport(ServiceTransport $serviceTransport): self
+    {
+        if ($this->ServiceTransport->removeElement($serviceTransport)) {
+            // set the owning side to null (unless already changed)
+            if ($serviceTransport->getLieuInteret() === $this) {
+                $serviceTransport->setLieuInteret(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ServiceRestauration[]
+     */
+    public function getServiceRestauration(): Collection
+    {
+        return $this->ServiceRestauration;
+    }
+
+    public function addServiceRestauration(ServiceRestauration $serviceRestauration): self
+    {
+        if (!$this->ServiceRestauration->contains($serviceRestauration)) {
+            $this->ServiceRestauration[] = $serviceRestauration;
+            $serviceRestauration->setLieuInteret($this);
+        }
+
+        return $this;
+    }
+
+    public function removeServiceRestauration(ServiceRestauration $serviceRestauration): self
+    {
+        if ($this->ServiceRestauration->removeElement($serviceRestauration)) {
+            // set the owning side to null (unless already changed)
+            if ($serviceRestauration->getLieuInteret() === $this) {
+                $serviceRestauration->setLieuInteret(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ServiceHotelier[]
+     */
+    public function getServiceHotelier(): Collection
+    {
+        return $this->ServiceHotelier;
+    }
+
+    public function addServiceHotelier(ServiceHotelier $serviceHotelier): self
+    {
+        if (!$this->ServiceHotelier->contains($serviceHotelier)) {
+            $this->ServiceHotelier[] = $serviceHotelier;
+            $serviceHotelier->setLieuInteret($this);
+        }
+
+        return $this;
+    }
+
+    public function removeServiceHotelier(ServiceHotelier $serviceHotelier): self
+    {
+        if ($this->ServiceHotelier->removeElement($serviceHotelier)) {
+            // set the owning side to null (unless already changed)
+            if ($serviceHotelier->getLieuInteret() === $this) {
+                $serviceHotelier->setLieuInteret(null);
             }
         }
 

@@ -40,15 +40,16 @@ class DashboardController extends AbstractDashboardController
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
         return [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
+            MenuItem::linkToCrud('Users', 'fa fa-lock', User::class),
              MenuItem::linkToCrud('Clients', 'fa fa-user', Client::class),
             MenuItem::linkToCrud('Factures', 'fa fa-user', Facture::class),
-            MenuItem::linkToCrud('Lieu Interet', 'fa fa-user', LieuInteret::class),
+            MenuItem::linkToCrud('Lieu Interet', 'fa fa-map', LieuInteret::class),
             MenuItem::linkToCrud('Reclamations', 'fa fa-user', Reclamation::class),
             MenuItem::linkToCrud('Reservations', 'fa fa-user', Reservation::class),
-            MenuItem::linkToCrud('Service Transport', 'fa fa-user', ServiceTransport::class),
-            MenuItem::linkToCrud('Services Hotelier', 'fa fa-user', ServiceHotelier::class),
-            MenuItem::linkToCrud('Service Restauration', 'fa fa-user', ServiceRestauration::class),
-            MenuItem::linkToCrud('Users', 'fa fa-user', User::class),
+            MenuItem::linkToCrud('Service Transport', 'fa fa-bus ', ServiceTransport::class),
+            MenuItem::linkToCrud('Services Hotelier', 'fa fa-bed', ServiceHotelier::class),
+            MenuItem::linkToCrud('Service Restauration', 'fa fa-cutlery', ServiceRestauration::class),
+            
         ];
     }
 }

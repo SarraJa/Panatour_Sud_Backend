@@ -13,6 +13,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+
 
 class ReclamationCrudController extends AbstractCrudController
 {
@@ -29,7 +31,9 @@ class ReclamationCrudController extends AbstractCrudController
             TextField::new('description'),
             TextField::new('typeObjet'),
             TextField::new('etat'),
-            //DateTimeField::new('CreatedAt'),
+            AssociationField::new('client'),
+            AssociationField::new('lieuInteret'),
+            DateTimeField::new('CreatedAt'),
         ];
     }
    
