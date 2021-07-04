@@ -88,10 +88,10 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
            
         }
         
-        return new RedirectResponse($this->urlGenerator->generate(
-            'user_profile',
-            ['id' => $token->getUser()]
-        ));
+       // return new RedirectResponse($this->urlGenerator->generate(
+        //    'user_profile',
+         //   ['id' => $token->getUser()]
+       // ));
        
 
         // For example:
