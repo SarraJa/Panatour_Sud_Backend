@@ -74,10 +74,7 @@ class ServiceHotelier
      */
     private $lieuInteret;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Client::class, mappedBy="paimentServiceHotelier")
-     */
-    private $clients;
+
 
     // /**
     //  * @ORM\Column(type="integer", nullable=true)
@@ -339,32 +336,11 @@ class ServiceHotelier
     //     return $this;
     // }
 
-    /**
-     * @return Collection|Client[]
-     */
-    public function getClients(): Collection
-    {
-        return $this->clients;
-    }
 
-    public function addClient(Client $client): self
-    {
-        if (!$this->clients->contains($client)) {
-            $this->clients[] = $client;
-            $client->addPaimentServiceHotelier($this);
-        }
 
-        return $this;
-    }
 
-    public function removeClient(Client $client): self
-    {
-        if ($this->clients->removeElement($client)) {
-            $client->removePaimentServiceHotelier($this);
-        }
 
-        return $this;
-    }
+
 
 
    

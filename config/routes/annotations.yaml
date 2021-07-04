@@ -5,3 +5,8 @@ controllers:
 kernel:
     resource: ../../src/Kernel.php
     type: annotation
+
+clientCard:
+    path: /clients/{id}/{mangopayid}/card
+    # the controller value has the format 'controller_class::method_name'
+    controller: App\Controller\ClientController::postCardInfos

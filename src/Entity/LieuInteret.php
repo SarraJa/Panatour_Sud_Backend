@@ -72,6 +72,11 @@ class LieuInteret
      */
     private $ServiceHotelier;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ServiceDesMonuments::class, mappedBy="lieuInteret")
+     */
+    private $ServiceDesMonuments;
+
     public function __construct()
     {
         $this->clients = new ArrayCollection();
@@ -82,6 +87,7 @@ class LieuInteret
         $this->ServiceTransport = new ArrayCollection();
         $this->ServiceRestauration = new ArrayCollection();
         $this->ServiceHotelier = new ArrayCollection();
+        $this->ServiceDesMonuments = new ArrayCollection();
     }
     
 
@@ -291,6 +297,36 @@ class LieuInteret
             // set the owning side to null (unless already changed)
             if ($serviceHotelier->getLieuInteret() === $this) {
                 $serviceHotelier->setLieuInteret(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ServiceDesMonuments[]
+     */
+    public function getServiceDesMonuments(): Collection
+    {
+        return $this->ServiceDesMonuments;
+    }
+
+    public function addServiceDesMonument(ServiceDesMonuments $serviceDesMonument): self
+    {
+        if (!$this->ServiceDesMonuments->contains($serviceDesMonument)) {
+            $this->ServiceDesMonuments[] = $serviceDesMonument;
+            $serviceDesMonument->setLieuInteret($this);
+        }
+
+        return $this;
+    }
+
+    public function removeServiceDesMonument(ServiceDesMonuments $serviceDesMonument): self
+    {
+        if ($this->ServiceDesMonuments->removeElement($serviceDesMonument)) {
+            // set the owning side to null (unless already changed)
+            if ($serviceDesMonument->getLieuInteret() === $this) {
+                $serviceDesMonument->setLieuInteret(null);
             }
         }
 

@@ -3,6 +3,8 @@
 
 namespace App\Services;
 require_once \dirname(__DIR__) . '../../vendor/autoload.php';
+require_once \dirname(__DIR__) . '../../var/config.php';
+
 
 use App\Entity\Client;
 use MangoPay;
@@ -36,40 +38,43 @@ class Mango
     * @var MangoPay\MangoPayApi
     */
     public function __construct(ParameterBagInterface $params)
-    {   $this->params=$params;
+    {
+        $this->params=$params;
         $this->mangoPayApi = new MangoPayApi();
-        //$this->mangoPayApi = new MangoPayApi();
-        $this->mangoPayApi->Config->ClientId = $params->get('MANGOPAY_CLIENT_ID');
-        $this->mangoPayApi->Config->ClientPassword = $params->get('MANGOPAY_CLIENT_PASSWORD');
+        $this->mangoPayApi->Config->ClientId = "3dwavetest";
+        $this->mangoPayApi->Config->ClientPassword = "uVSi0nLMBZO5NOLx3D4E0OLBqndANyDkxqBSBKpwuHKD9PJPYm";
         $this->mangoPayApi->Config->TemporaryFolder = \dirname(__DIR__) . '/../var';
-        $this->mangoPayApi->Config->BaseUrl = $params->get('MANGOPAY_BASE_URL');
+        //$this->mangoPayApi->Config->TemporaryFolder = "var/config.php";
+
+        $this->mangoPayApi->Config->BaseUrl = "https://api.sandbox.mangopay.com";
     }
+
     /**
      * Create Mangopay User
      * @return MangopPayUser $mangoUser
      */
     public function getMangoUser(Client $user)
     {
-        $d =new \DateTime($user->dateNaissance);
+       // $d =new \DateTime();
         
         try
         {
             $mangoUser = new \MangoPay\UserNatural();
             $mangoUser->FirstName = $user->getNom();
             $mangoUser->LastName = $user->getPrenom();
-            $mangoUser->Birthday = $d->getTimestamp();
-          //  $mangoUser->Address = "blablabla";
-            $mangoUser->Nationality = "tunisien";
+            $mangoUser->Birthday = $user->dateNaissance->getTimestamp();
+            $mangoUser->Nationality = "TN";
             $mangoUser->CountryOfResidence = "FR";
-            $mangoUser->Email = $user->email;
+            $mangoUser->Email = "sarra@gmail.com";
             $mangoUser->Tag="userr";
             $mangoUser->IncomeRange = 2;
             $mangoUser->Occupation='user';
-            //Send the request
+
             var_dump($mangoUser);
-          //  $mangoUser = $this->mangoPayApi->Users->Create($mangoUser);
+           $mangoUser = $this->mangoPayApi->Users->Create($mangoUser);
 
             return $mangoUser;
+
         }
         
         catch(\MangoPay\Libraries\ResponseException $e)
@@ -78,6 +83,24 @@ class Mango
         }
 
     }
+   /* public function getMangoUser()
+    {
+
+        $mangoUser = new \MangoPay\UserNatural();
+        $mangoUser->PersonType = "NATURAL";
+        $mangoUser->FirstName = 'John';
+        $mangoUser->LastName = 'Doe';
+        $mangoUser->Birthday = 1409735187;
+        $mangoUser->Nationality = "FR";
+        $mangoUser->CountryOfResidence = "FR";
+        $mangoUser->Email = 'john.doe@mail.com';
+
+        //Send the request
+        $mangoUser = $this->mangoPayApi->Users->Create($mangoUser);
+
+        return $mangoUser;
+    }*/
+
 
     public function CreateWallet(String $currency,String $name)
     {

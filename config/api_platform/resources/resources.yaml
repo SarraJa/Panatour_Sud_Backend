@@ -1,0 +1,104 @@
+App\Entity\Reservation:
+  itemOperations:
+    get: ~
+    put: ~
+    delete: ~
+    payment:
+      method: POST
+      path: /reservations/{id}/payment
+      controller: App\Controller\CreateCard::payment
+      openapi_context:
+        summary: post a credit card
+        description: >
+          #post your card
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  walletId: {type: string}
+                  cardId: {type: string}
+                  authorId: {type: string}
+                  amount: {type: int}
+              example:
+                walletId: "83704961"
+                cardId: "83334843"
+                authorId: "83725596"
+                amount: 5000
+    get_card:
+      method: GET
+      path: /reservations/{id}/{cardId}/card
+      controller: App\Controller\CreateCard::getCardById
+      openapi_context:
+        summary: get one cards
+        description: >
+          #get your card
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cardId: {type: string}
+              example:
+                cardId: "83241426"
+    get_transaction:
+      method: GET
+      path: /reservations/{id}/{transactionId}/transaction
+      controller: App\Controller\CreateCard::getPayInById
+      openapi_context:
+        summary: get transaction details
+        description: >
+          #get your transaction details
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  payInId: {type: string}
+              example:
+                payInId: "83242141"
+App\Entity\Client:
+  itemOperations:
+    get: ~
+    put: ~
+    delete: ~
+    post_card:
+      method: POST
+      path: /clients/{id}/{mangopayid}/card
+      controller: App\Controller\CreateCard::postCardInfos
+      openapi_context:
+        summary: post a credit card
+        description: >
+          #post your cards
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  card-number: {type: string}
+                  CVC: {type: string}
+                  date-exp: {type: string}
+              example:
+                card-number: "4972485830400049"
+                CVC: "123"
+                date-exp: "06/21"
+    create_user:
+      method: POST
+      path: /clients/{id}/user
+      controller: App\Controller\CreateCard::test
+      openapi_context:
+        summary: create mangopay User
+        description: >
+          #create mangoUser
+    get_cards:
+      method: GET
+      path: /clients/{id}/{mangopayid}/cards
+      controller: App\Controller\CreateCard::getCards
+      openapi_context:
+        summary: get all cards
+        description: >
+          #get your card

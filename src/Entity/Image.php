@@ -59,6 +59,13 @@ class Image
      * @ORM\ManyToOne(targetEntity=ServiceTransport::class, inversedBy="images")
      */
     private $ServiceTransport;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=ServiceDesMonuments::class, inversedBy="images")
+     */
+    private $serviceDesMonuments;
+
+
     
     public function getImageFile(): ?File
     {
@@ -121,6 +128,22 @@ class Image
 
         return $this;
     }
+
+    public function getServiceDesMonuments(): ?ServiceDesMonuments
+    {
+        return $this->serviceDesMonuments;
+    }
+
+    public function setServiceDesMonuments(?ServiceDesMonuments $serviceDesMonuments): self
+    {
+        $this->serviceDesMonuments = $serviceDesMonuments;
+
+        return $this;
+    }
+
+
+
+
 
     
 }

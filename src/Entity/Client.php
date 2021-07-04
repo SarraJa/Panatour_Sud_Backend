@@ -7,12 +7,49 @@ use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+
+
 use DateTime;
 
 
 /**
- * @ApiResource()
+ *@ApiResource(
+ *   collectionOperations={
+ *     "get"={},
+ *     "post"={},
+ *
+ *     },
+ *     itemOperations={
+ *      "get"={},
+ *      "post_card"={
+ *        "method"="POST",
+ *        "path"="/clients/{id}/{mangopayid}/card",
+ *        "input_formats"={"json"={"application/json"}},
+ *       "swagger_context"={
+              "summary" = "post card",
+              "description" = "post card",
+ *         },
+ *        "controller"="App\Controller\MangoUserController::postCardInfos"
+ *     },
+ *     "create_user"={
+ *        "method"="POST",
+ *        "path"="/clients/{id}/client",
+ *        "controller"="App\Controller\MangoUserController::CreateUserPayment"
+ *     },
+ *     "get_cards"={
+ *        "method"="GET",
+ *        "path"="/clients/{id}/{mangopayid}/cards",
+ *        "controller"="App\Controller\MangoUserController::getCards"
+ *     },
+ *
+ *     "put"={},
+ *     "delete"={},
+ *   }
+ * )
  * @ORM\Entity(repositoryClass=ClientRepository::class)
+ *
+
+ * )
 
  */
 class Client extends User
@@ -74,10 +111,7 @@ class Client extends User
      */
     private $mangopayid;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=ServiceHotelier::class, inversedBy="clients")
-     */
-    private $paimentServiceHotelier;
+
 
     public function __construct()
     {
@@ -281,27 +315,5 @@ class Client extends User
         return $this;
     }
 
-    /**
-     * @return Collection|ServiceHotelier[]
-     */
-    public function getPaimentServiceHotelier(): Collection
-    {
-        return $this->paimentServiceHotelier;
-    }
-
-    public function addPaimentServiceHotelier(ServiceHotelier $paimentServiceHotelier): self
-    {
-        if (!$this->paimentServiceHotelier->contains($paimentServiceHotelier)) {
-            $this->paimentServiceHotelier[] = $paimentServiceHotelier;
-        }
-
-        return $this;
-    }
-
-    public function removePaimentServiceHotelier(ServiceHotelier $paimentServiceHotelier): self
-    {
-        $this->paimentServiceHotelier->removeElement($paimentServiceHotelier);
-
-        return $this;
-    }
+   
 }

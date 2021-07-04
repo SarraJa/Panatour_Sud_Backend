@@ -7,7 +7,35 @@ use App\Repository\ReservationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 /**
- * @ApiResource()
+ *@ApiResource(
+ *   collectionOperations={
+ *     "get"={},
+ *     "post"={},
+ *
+ *     },
+ *     itemOperations={
+ *      "get"={},
+ *      "payment"={
+ *        "method"="POST",
+ *        "path"="/reservations/{id}/payment",
+ *        "controller"="App\Controller\MangoUserController::payment"
+ *     },
+ *     "get_card"={
+ *        "method"="GET",
+ *        "path"="/reservations/{id}/{cardId}/card",
+ *        "controller"="App\Controller\MangoUserController::getCardById"
+ *     },
+ *     "get_transaction"={
+ *        "method"="GET",
+ *        "path"="/reservations/{id}/{transactionId}/transaction",
+ *        "description"= "get transaction details",
+ *        "controller"="App\Controller\MangoUserController::getPayInById"
+ *     },
+ *
+ *     "put"={},
+ *     "delete"={},
+ *   }
+ * )
  * @ORM\Entity(repositoryClass=ReservationRepository::class)
  */
 class Reservation
@@ -83,6 +111,17 @@ class Reservation
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $checkOut;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $transactionId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=ServiceDesMonuments::class, inversedBy="reservations")
+     */
+    private $serviceDesMonuments;
+
 
 
     public function __construct( )
@@ -264,4 +303,30 @@ class Reservation
 
         return $this;
     }
+
+    public function getTransactionId(): ?string
+    {
+        return $this->transactionId;
+    }
+
+    public function setTransactionId(?string $transactionId): self
+    {
+        $this->transactionId = $transactionId;
+
+        return $this;
+    }
+
+    public function getServiceDesMonuments(): ?ServiceDesMonuments
+    {
+        return $this->serviceDesMonuments;
+    }
+
+    public function setServiceDesMonuments(?ServiceDesMonuments $serviceDesMonuments): self
+    {
+        $this->serviceDesMonuments = $serviceDesMonuments;
+
+        return $this;
+    }
+
+
 }
