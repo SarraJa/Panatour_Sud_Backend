@@ -3,7 +3,6 @@
 
 namespace App\Services;
 require_once \dirname(__DIR__) . '../../vendor/autoload.php';
-require_once \dirname(__DIR__) . '../../var/config.php';
 
 
 use App\Entity\Client;
@@ -44,7 +43,6 @@ class Mango
         $this->mangoPayApi->Config->ClientId = "3dwavetest";
         $this->mangoPayApi->Config->ClientPassword = "uVSi0nLMBZO5NOLx3D4E0OLBqndANyDkxqBSBKpwuHKD9PJPYm";
         $this->mangoPayApi->Config->TemporaryFolder = \dirname(__DIR__) . '/../var';
-        //$this->mangoPayApi->Config->TemporaryFolder = "var/config.php";
 
         $this->mangoPayApi->Config->BaseUrl = "https://api.sandbox.mangopay.com";
     }
