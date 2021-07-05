@@ -60,7 +60,7 @@ class ServiceTransport
     private $createdAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="serviceTransport")
+     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="ServiceTransport")
      */
     private $reservations;
 
