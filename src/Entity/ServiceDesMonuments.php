@@ -7,6 +7,8 @@ use App\Repository\ServiceDesMonumentsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
+
 
 /**
  * @ApiResource()
@@ -74,6 +76,9 @@ class ServiceDesMonuments
         $this->image = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->reservations = new ArrayCollection();
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new DateTime('now'));
+        }
     }
 
     public function getId(): ?int

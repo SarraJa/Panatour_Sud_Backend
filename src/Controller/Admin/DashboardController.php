@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\ServiceDesMonuments;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -48,6 +49,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Reservations', 'fa fa-user', Reservation::class),
             MenuItem::linkToCrud('Service Transport', 'fa fa-bus ', ServiceTransport::class),
             MenuItem::linkToCrud('Services Hotelier', 'fa fa-bed', ServiceHotelier::class),
+            MenuItem::linkToCrud('Services Des Monuments', 'fa fa-map', ServiceDesMonuments::class),
             MenuItem::linkToCrud('Service Restauration', 'fa fa-cutlery', ServiceRestauration::class),
             
         ];
