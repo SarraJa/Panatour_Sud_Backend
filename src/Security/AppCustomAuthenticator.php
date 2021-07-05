@@ -30,15 +30,15 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
     use TargetPathTrait;
 
     public const LOGIN_ROUTE = 'app_login';
-    //private $csrfTokenManager;
+    private $csrfTokenManager;
 
 
     private $urlGenerator;
 
-    public function __construct(UrlGeneratorInterface $urlGenerator )
+    public function __construct(UrlGeneratorInterface $urlGenerator , CsrfTokenManagerInterface $csrfTokenManager)
     {
         $this->urlGenerator = $urlGenerator;
-       // $this->csrfTokenManager = $csrfTokenManager;
+        $this->csrfTokenManager = $csrfTokenManager;
     }
 
     public function authenticate(Request $request): PassportInterface
@@ -57,7 +57,7 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
     }
     
 
-    /*public function getUser($credentials, UserProviderInterface $userProvider)
+    public function getUser($credentials, UserProviderInterface $userProvider)
     {
         $token = new CsrfToken('authenticate', $credentials['csrf_token']);
         if (!$this->csrfTokenManager->isTokenValid($token)) {
@@ -72,19 +72,26 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         return $user;
-    }*/
+    }
 
-    /*public function getId($credentials): ?string
+    public function getId($credentials): ?string
     {
         return $credentials['id'];
-    }*/
-
+    }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
-        }
+
+             }
+
+       // return new RedirectResponse($this->urlGenerator->generate(
+        //    'user_profile',
+         //   ['id' => $token->getUser()]
+       // ));
+
 
         // For example:
         //return new RedirectResponse($this->urlGenerator->generate('some_route'));
