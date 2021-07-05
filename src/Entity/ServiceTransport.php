@@ -70,7 +70,7 @@ class ServiceTransport
     private $lieuInteret;
 
     /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="serviceTransport",cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="ServiceTransport",cascade={"persist","remove"})
      */
     private $images;
 
