@@ -27,7 +27,7 @@ class FactureCrudController extends AbstractCrudController
         return [
             IdField::new('Id'),
             TextField::new('description'),
-            MoneyField::new('prixTotal'),
+            MoneyField::new('prixTotal')->setCurrency('TND'),
             DateTimeField::new('CreatedAt'),
             AssociationField::new('reservation'),
 
