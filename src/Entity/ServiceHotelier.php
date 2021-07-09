@@ -14,7 +14,25 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *   collectionOperations={
+ *     "get"={},
+ *     "post"={},
+ *
+ *     },
+ *     itemOperations={
+ *      "get"={},
+ *     "createWallet"={
+ *        "method"="POST",
+ *        "path"="/service_hoteliers/{id}/wallet",
+ *        "description"= "get transaction details",
+ *        "controller"="App\Controller\MangoUserController::createWallet"
+ *     },
+ *
+ *     "put"={},
+ *     "delete"={},
+ *   }
+ * )
  * @ORM\Entity(repositoryClass=ServiceHotelierRepository::class)
  * @Vich\Uploadable
  * @ApiFilter(SearchFilter::class, properties={ "adresse": "exact"})
@@ -73,6 +91,11 @@ class ServiceHotelier
      * @ORM\ManyToOne(targetEntity=LieuInteret::class, inversedBy="ServiceHotelier")
      */
     private $lieuInteret;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $walletId;
 
 
 
@@ -335,6 +358,18 @@ class ServiceHotelier
 
     //     return $this;
     // }
+
+    public function getWalletId(): ?string
+    {
+        return $this->walletId;
+    }
+
+    public function setWalletId(?string $walletId): self
+    {
+        $this->walletId = $walletId;
+
+        return $this;
+    }
 
 
 

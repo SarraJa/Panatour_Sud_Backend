@@ -11,7 +11,25 @@ use DateTime;
 
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *   collectionOperations={
+ *     "get"={},
+ *     "post"={},
+ *
+ *     },
+ *     itemOperations={
+ *      "get"={},
+ *     "createWallet"={
+ *        "method"="POST",
+ *        "path"="/servicesdesmonuments/{id}/wallet",
+ *        "description"= "get transaction details",
+ *        "controller"="App\Controller\MangoUserController::createWallet"
+ *     },
+ *
+ *     "put"={},
+ *     "delete"={},
+ *   }
+ * )
  * @ORM\Entity(repositoryClass=ServiceDesMonumentsRepository::class)
  */
 class ServiceDesMonuments

@@ -14,7 +14,25 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *   collectionOperations={
+ *     "get"={},
+ *     "post"={},
+ *
+ *     },
+ *     itemOperations={
+ *      "get"={},
+ *     "createWallet"={
+ *        "method"="POST",
+ *        "path"="/servicerestauration/{id}/wallet",
+ *        "description"= "get transaction details",
+ *        "controller"="App\Controller\MangoUserController::createWallet"
+ *     },
+ *
+ *     "put"={},
+ *     "delete"={},
+ *   }
+ * )
  * @ORM\Entity(repositoryClass=ServiceRestaurationRepository::class)
  * @Vich\Uploadable
  * @ApiFilter(SearchFilter::class, properties={ "adresse": "partial"})

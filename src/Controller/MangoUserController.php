@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Reservation;
+use App\Entity\ServiceHotelier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -122,7 +123,7 @@ class MangoUserController extends AbstractController
         );
         $routeParameters = $request->attributes->get('_route_params');
         $rec=$this->getDoctrine()
-            ->getRepository(Reclamation::class)
+            ->getRepository(ServiceHotelier::class)
             ->findOneBySomeField($routeParameters['id']);
         // var_dump($data['name'].$data['currency']);
         if ($request->getMethod() == 'POST') {

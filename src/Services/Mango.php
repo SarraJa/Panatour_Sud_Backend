@@ -63,7 +63,8 @@ class Mango
             $mangoUser->Birthday = $user->dateNaissance->getTimestamp();
             $mangoUser->Nationality = "TN";
             $mangoUser->CountryOfResidence = "FR";
-            $mangoUser->Email = "sarra@gmail.com";
+            //$mangoUser->Email = "sarra@gmail.com";
+            $mangoUser->Email = $user->getUsername();
             $mangoUser->Tag="userr";
             $mangoUser->IncomeRange = 2;
             $mangoUser->Occupation='user';
@@ -106,7 +107,7 @@ class Mango
         {
             // claims wallets in ADMIN USER ACCOUNT
             $Wallet = new Wallet();
-            $Wallet->Owners = array('83817836');
+            $Wallet->Owners = array('112609380');
             $Wallet->Description = $name;
             $Wallet->Currency = $currency;
             $Wallet = $this->mangoPayApi->Wallets->Create($Wallet);
@@ -121,6 +122,8 @@ class Mango
 
     }
 
+
+
     public function cardRegistration(array $data, String $mangouserid)
     {
         try
@@ -128,17 +131,21 @@ class Mango
             $cardRegister = new CardRegistration();
             $cardRegister->UserId = $mangouserid;
             $cardRegister->Currency = "EUR";
+            $cardRegister->CardRegistrationURL="";
+            $cardRegister->CardType="CB_VISA_MASTERCARD";
+            //$cardRegister->CardId="";
             //do registration
             $cardRegister= $this->mangoPayApi->CardRegistrations->Create($cardRegister);
-            //var_dump($cardRegister);
+
+            var_dump($cardRegister);
             //put card details
             $updatedCardRegister=$this->createCard($data, $cardRegister);
             // var_dump("updated");
             //var_dump($updatedCardRegister);
             //get card object
-            $card = $this->mangoPayApi->Cards->Get($updatedCardRegister->CardId);
+            //$card = $this->mangoPayApi->Cards->Get($updatedCardRegister->CardId);
 
-            return $card;
+            return $cardRegister;
 
         }
         catch(\MangoPay\Libraries\ResponseException $e)
@@ -160,16 +167,16 @@ class Mango
                 '&cardCvx=' . $data['CVC'];
             $request = curl_init($cardregistration->CardRegistrationURL);
             curl_setopt($request, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($request, CURLOPT_SSL_VERIFYPEER, true);
+            //curl_setopt($request, CURLOPT_SSL_VERIFYPEER, true);
             curl_setopt($request, CURLOPT_POST, true);
             curl_setopt($request, CURLOPT_POSTFIELDS, $data);
-            //curl_setopt($request, CURLOPT_SSL_VERIFYHOST, 2);
-            // curl_setopt ($request, CURLOPT_CAINFO, "C:\wamp64\bin\php\php7.2.18\\extras\ssl\cacert.pem");
-            // curl_setopt( $request, CURLOPT_SSLCERT, "C:\wamp64\bin\php\php7.2.18\\extras\ssl\cacert.pem");
+           // curl_setopt($request, CURLOPT_SSL_VERIFYHOST, 2);
+            //curl_setopt ($request, CURLOPT_CAINFO, "C:\wamp64\bin\php\php7.2.18\\extras\ssl\cacert.pem");
+          //  curl_setopt( $request, CURLOPT_SSLCERT, "C:\wamp64\bin\php\php7.2.18\\extras\ssl\cacert.pem");
 
             $registrationData=curl_exec($request);
-            //var_dump(curl_error($request));
-            //var_dump($registrationData);
+            var_dump(curl_error($request));
+           var_dump($registrationData);
             $cardregistration->RegistrationData= $registrationData ;
             curl_close($request);
 

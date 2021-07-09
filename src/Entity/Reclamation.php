@@ -54,6 +54,11 @@ class Reclamation
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $CreatedAt;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $codeReclamation;
     public function __construct( )
     {
         
@@ -147,6 +152,18 @@ class Reclamation
     public function setCreatedAt(?\DateTimeInterface $CreatedAt): self
     {
         $this->CreatedAt = $CreatedAt;
+
+        return $this;
+    }
+
+    public function getCodeReclamation(): ?string
+    {
+        return $this->codeReclamation;
+    }
+
+    public function setCodeReclamation(?string $codeReclamation): self
+    {
+        $this->codeReclamation = $codeReclamation;
 
         return $this;
     }

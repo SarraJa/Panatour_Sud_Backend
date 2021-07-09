@@ -122,6 +122,11 @@ class Reservation
      */
     private $serviceDesMonuments;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $codeReservation;
+
 
 
     public function __construct( )
@@ -327,6 +332,20 @@ class Reservation
 
         return $this;
     }
+    public function __toString() {
+        return $this->id;
+    }
 
+    public function getCodeReservation(): ?string
+    {
+        return $this->codeReservation;
+    }
+
+    public function setCodeReservation(?string $codeReservation): self
+    {
+        $this->codeReservation = $codeReservation;
+
+        return $this;
+    }
 
 }
