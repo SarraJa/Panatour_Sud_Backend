@@ -77,7 +77,7 @@ class ServiceDesMonuments
     private $lieuInteret;
 
     /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="serviceDesMonuments")
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="serviceDesMonuments",cascade={"persist","remove"})
      */
     private $images;
 
