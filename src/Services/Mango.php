@@ -143,9 +143,9 @@ class Mango
             // var_dump("updated");
             //var_dump($updatedCardRegister);
             //get card object
-            //$card = $this->mangoPayApi->Cards->Get($updatedCardRegister->CardId);
+            $card = $this->mangoPayApi->Cards->Get($updatedCardRegister->CardId);
 
-            return $cardRegister;
+            return $card;
 
         }
         catch(\MangoPay\Libraries\ResponseException $e)
