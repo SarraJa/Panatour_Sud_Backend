@@ -90,6 +90,7 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator implements P
         return $user;
     }
 
+
     public function getId($credentials): ?string
     {
         return $credentials['id'];

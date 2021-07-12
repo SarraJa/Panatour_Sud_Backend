@@ -127,6 +127,16 @@ class Reservation
      */
     private $codeReservation;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $status;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $montantPaiment;
+
 
 
     public function __construct( )
@@ -344,6 +354,30 @@ class Reservation
     public function setCodeReservation(?string $codeReservation): self
     {
         $this->codeReservation = $codeReservation;
+
+        return $this;
+    }
+
+    public function getStatus(): ?bool
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?bool $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getMontantPaiment(): ?float
+    {
+        return $this->montantPaiment;
+    }
+
+    public function setMontantPaiment(?float $montantPaiment): self
+    {
+        $this->montantPaiment = $montantPaiment;
 
         return $this;
     }
