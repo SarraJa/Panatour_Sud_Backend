@@ -39,9 +39,11 @@ final class Versions
   'doctrine/cache' => '2.0.3@c9622c6820d3ede1e2315a6a377ea1076e421d88',
   'doctrine/collections' => '1.6.7@55f8b799269a1a472457bd1a41b4f379d4cfba4a',
   'doctrine/common' => '3.1.2@a036d90c303f3163b5be8b8fde9b6755b2be4a3a',
+  'doctrine/data-fixtures' => '1.5.0@51d3d4880d28951fff42a635a2389f8c63baddc5',
   'doctrine/dbal' => '2.13.2@8dd39d2ead4409ce652fd4f02621060f009ea5e4',
   'doctrine/deprecations' => 'v0.5.3@9504165960a1f83cc1480e2be1dd0a0478561314',
   'doctrine/doctrine-bundle' => '2.4.2@4202ce675d29e70a8b9ee763bec021b6f44caccb',
+  'doctrine/doctrine-fixtures-bundle' => '3.4.0@870189619a7770f468ffb0b80925302e065a3b34',
   'doctrine/doctrine-migrations-bundle' => '3.1.1@91f0a5e2356029575f3038432cc188b12f9d5da5',
   'doctrine/event-manager' => '1.1.1@41370af6a30faa9dc0368c4a6814d596e81aba7f',
   'doctrine/inflector' => '2.0.3@9cf661f4eb38f7c881cac67c75ea9b00bf97b210',
@@ -138,10 +140,10 @@ final class Versions
   'vich/uploader-bundle' => '1.18.0@c5250c8d6a072960250ce5130e68a5693b3b48dd',
   'webmozart/assert' => '1.10.0@6964c76c7804814a842473e0c8fd15bab0f18e25',
   'willdurand/negotiation' => '3.0.0@04e14f38d4edfcc974114a07d2777d90c98f3d9c',
-  'symfony/polyfill-ctype' => '*@4a83e9788bee916b82b5cd0e74e3dc9efabdaf5b',
-  'symfony/polyfill-iconv' => '*@4a83e9788bee916b82b5cd0e74e3dc9efabdaf5b',
-  'symfony/polyfill-php72' => '*@4a83e9788bee916b82b5cd0e74e3dc9efabdaf5b',
-  '__root__' => 'dev-main@4a83e9788bee916b82b5cd0e74e3dc9efabdaf5b',
+  'symfony/polyfill-ctype' => '*@2963bd5a183b6053bff8c38eabb27aa3064f4c5d',
+  'symfony/polyfill-iconv' => '*@2963bd5a183b6053bff8c38eabb27aa3064f4c5d',
+  'symfony/polyfill-php72' => '*@2963bd5a183b6053bff8c38eabb27aa3064f4c5d',
+  '__root__' => 'dev-main@2963bd5a183b6053bff8c38eabb27aa3064f4c5d',
 );
 
     private function __construct()
