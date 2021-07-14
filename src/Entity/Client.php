@@ -115,7 +115,7 @@ class Client extends Userd
 
     public function __construct()
     {
-        parent::__construct();
+        //parent::__construct();
         $this->lieuVisite = new ArrayCollection();
         $this->reservation = new ArrayCollection();
         $this->reclamation = new ArrayCollection();
