@@ -343,7 +343,7 @@ class Reservation
         return $this;
     }
     public function __toString() {
-        return $this->id;
+        return (string)$this->id;
     }
 
     public function getCodeReservation(): ?string

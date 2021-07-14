@@ -15,6 +15,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+
 
 
 class LieuInteretCrudController extends AbstractCrudController
@@ -29,8 +31,8 @@ class LieuInteretCrudController extends AbstractCrudController
     {
         return [
             TextField::new('gouvernerat'),
-            IntegerField::new('latitude'),
-            IntegerField::new('longitude'),
+            NumberField::new('latitude'),
+            NumberField::new('longitude'),
             IntegerField::new('score'),
             DateTimeField::new('CreatedAt'),
             AssociationField::new('clients'),
