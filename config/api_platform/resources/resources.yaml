@@ -91,7 +91,7 @@ App\Entity\Client:
       path: /clients/{id}/user
       controller: App\Controller\CreateCard::test
       openapi_context:
-        summary: create mangopay User
+        summary: create mangopay Userd
         description: >
           #create mangoUser
     get_cards:

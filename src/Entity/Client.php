@@ -52,11 +52,11 @@ use DateTime;
  * )
 
  */
-class Client extends User
+class Client extends Userd
 {
     /**
      * @ORM\Id()
-     * @ORM\OneToOne(targetEntity=User::class) 
+     * @ORM\OneToOne(targetEntity=Userd::class)
      * @ORM\JoinColumn(name="id", referencedColumnName="id")     
      */
     public $id;
@@ -115,6 +115,7 @@ class Client extends User
 
     public function __construct()
     {
+        parent::__construct();
         $this->lieuVisite = new ArrayCollection();
         $this->reservation = new ArrayCollection();
         $this->reclamation = new ArrayCollection();

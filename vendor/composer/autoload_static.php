@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite3b1aa6b2b404012513b8caf3a52002d
+class ComposerStaticInit6c047a0efebba80f80185c5220d63c65
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -12,16 +12,16 @@ class ComposerStaticInite3b1aa6b2b404012513b8caf3a52002d
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
-        '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
-        '53c7be3308b5aa229d03a4dfcf6ca18d' => __DIR__ . '/..' . '/symfony/intl/Resources/functions.php',
-        '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
-        'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
-        '7e9bd612cc444b3eed788ebbe46263a0' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/autoload.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
+        '53c7be3308b5aa229d03a4dfcf6ca18d' => __DIR__ . '/..' . '/symfony/intl/Resources/functions.php',
+        '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
+        'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         '09f6b20656683369174dd6fa83b7e5fb' => __DIR__ . '/..' . '/symfony/polyfill-uuid/bootstrap.php',
+        '7e9bd612cc444b3eed788ebbe46263a0' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/autoload.php',
         '256c1545158fc915c75e51a931bdba60' => __DIR__ . '/..' . '/lcobucci/jwt/compat/class-aliases.php',
         '0d273777b2b0d96e49fb3d800c6b0e81' => __DIR__ . '/..' . '/lcobucci/jwt/compat/json-exception-polyfill.php',
         'd6b246ac924292702635bb2349f4a64b' => __DIR__ . '/..' . '/lcobucci/jwt/compat/lcobucci-clock-polyfill.php',
@@ -178,8 +178,8 @@ class ComposerStaticInite3b1aa6b2b404012513b8caf3a52002d
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -563,9 +563,9 @@ class ComposerStaticInite3b1aa6b2b404012513b8caf3a52002d
         ),
         'Doctrine\\Common\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
-            1 => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common',
-            2 => __DIR__ . '/..' . '/doctrine/persistence/lib/Doctrine/Common',
+            0 => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common',
+            1 => __DIR__ . '/..' . '/doctrine/persistence/lib/Doctrine/Common',
+            2 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
         ),
         'Doctrine\\Bundle\\MigrationsBundle\\' => 
         array (
@@ -1091,6 +1091,7 @@ class ComposerStaticInite3b1aa6b2b404012513b8caf3a52002d
         'App\\Controller\\Admin\\LieuInteretCrudController' => __DIR__ . '/../..' . '/src/Controller/Admin/LieuInteretCrudController.php',
         'App\\Controller\\Admin\\ReclamationCrudController' => __DIR__ . '/../..' . '/src/Controller/Admin/ReclamationCrudController.php',
         'App\\Controller\\Admin\\ReservationCrudController' => __DIR__ . '/../..' . '/src/Controller/Admin/ReservationCrudController.php',
+        'App\\Controller\\Admin\\ServiceDesMonumentsCrudController' => __DIR__ . '/../..' . '/src/Controller/Admin/ServiceDesMonumentsCrudController.php',
         'App\\Controller\\Admin\\ServiceHotelierCrudController' => __DIR__ . '/../..' . '/src/Controller/Admin/ServiceHotelierCrudController.php',
         'App\\Controller\\Admin\\ServiceRestaurationCrudController' => __DIR__ . '/../..' . '/src/Controller/Admin/ServiceRestaurationCrudController.php',
         'App\\Controller\\Admin\\ServiceTransportCrudController' => __DIR__ . '/../..' . '/src/Controller/Admin/ServiceTransportCrudController.php',
@@ -1109,7 +1110,7 @@ class ComposerStaticInite3b1aa6b2b404012513b8caf3a52002d
         'App\\Entity\\ServiceHotelier' => __DIR__ . '/../..' . '/src/Entity/ServiceHotelier.php',
         'App\\Entity\\ServiceRestauration' => __DIR__ . '/../..' . '/src/Entity/ServiceRestauration.php',
         'App\\Entity\\ServiceTransport' => __DIR__ . '/../..' . '/src/Entity/ServiceTransport.php',
-        'App\\Entity\\User' => __DIR__ . '/../..' . '/src/Entity/User.php',
+        'App\\Entity\\Userd' => __DIR__ . '/../..' . '/src/Entity/Userd.php',
         'App\\EventSubscriber\\EasyAdminSubscriber' => __DIR__ . '/../..' . '/src/EventSubscriber/EasyAdminSubscriber.php',
         'App\\Form\\ClientTypeFormType' => __DIR__ . '/../..' . '/src/Form/ClientTypeFormType.php',
         'App\\Form\\ImageFormType' => __DIR__ . '/../..' . '/src/Form/ImageFormType.php',
@@ -6216,9 +6217,9 @@ class ComposerStaticInite3b1aa6b2b404012513b8caf3a52002d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite3b1aa6b2b404012513b8caf3a52002d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite3b1aa6b2b404012513b8caf3a52002d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInite3b1aa6b2b404012513b8caf3a52002d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6c047a0efebba80f80185c5220d63c65::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6c047a0efebba80f80185c5220d63c65::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit6c047a0efebba80f80185c5220d63c65::$classMap;
 
         }, null, ClassLoader::class);
     }

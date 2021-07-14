@@ -48,7 +48,7 @@ class Mango
     }
 
     /**
-     * Create Mangopay User
+     * Create Mangopay Userd
      * @return MangopPayUser $mangoUser
      */
     public function getMangoUser(Client $user)

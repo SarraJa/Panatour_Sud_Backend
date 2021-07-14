@@ -8,7 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\User;
+use App\Entity\Userd;
 use App\Entity\Client;
 use App\Entity\Facture;
 use App\Entity\Reclamation;
@@ -41,7 +41,7 @@ class DashboardController extends AbstractDashboardController
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
         return [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-            MenuItem::linkToCrud('Users', 'fa fa-lock', User::class),
+            MenuItem::linkToCrud('Users', 'fa fa-lock', Userd::class),
              MenuItem::linkToCrud('Clients', 'fa fa-user', Client::class),
             MenuItem::linkToCrud('Factures', 'fa fa-user', Facture::class),
             MenuItem::linkToCrud('Lieu Interet', 'fa fa-map', LieuInteret::class),

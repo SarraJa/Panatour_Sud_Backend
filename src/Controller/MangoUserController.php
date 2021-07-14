@@ -145,7 +145,7 @@ class MangoUserController extends AbstractController
         $user=$this->getDoctrine()
             ->getRepository(Client::class)
             ->findOneBySomeField($routeParameters['id']);
-        //$user=$em->getRepository(User::class)->findOneBySomeField(9);
+        //$user=$em->getRepository(Userd::class)->findOneBySomeField(9);
         var_dump($user->getNom());
         $response=$this->serviceHandler->getMangoUser($user);
         $entityManager = $this->getDoctrine()->getManager();

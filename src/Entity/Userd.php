@@ -18,12 +18,10 @@ use Doctrine\ORM\Mapping\DiscriminatorMap;
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @InheritanceType("JOINED")
  * @DiscriminatorColumn(name="discr", type="string")
- * @DiscriminatorMap({"User" = "User", "Client" = "Client"})
- 
- 
- 
+ * @DiscriminatorMap({"Userd" = "Userd", "Client" = "Client"})
+
  */
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class Userd implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * @ORM\Id()
