@@ -68,6 +68,7 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator implements P
     {
         return $credentials['password'];
     }
+
     public function checkCredentials($credentials, UserInterface $user)
     {
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
@@ -84,12 +85,25 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator implements P
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('username could not be found.');
+            throw new CustomUserMessageAuthenticationException('Email could not be found.');
         }
 
         return $user;
     }
+    public function getCredentials(Request $request)
+    {
+        $credentials = [
+            'username' => $request->request->get('username'),
+            'password' => $request->request->get('password'),
+            'csrf_token' => $request->request->get('_csrf_token'),
+        ];
+        $request->getSession()->set(
+            Security::LAST_USERNAME,
+            $credentials['username']
+        );
 
+        return $credentials;
+    }
 
     public function getId($credentials): ?string
     {
@@ -111,7 +125,7 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator implements P
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
-            $user = $this->getId();
+            //$user = $this->getId();
 
         }
 

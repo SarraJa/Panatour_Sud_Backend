@@ -7,6 +7,9 @@ use App\Repository\ServiceDesMonumentsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use DateTime;
 
 
@@ -31,6 +34,8 @@ use DateTime;
  *   }
  * )
  * @ORM\Entity(repositoryClass=ServiceDesMonumentsRepository::class)
+ * @Vich\Uploadable
+ * @ApiFilter(SearchFilter::class, properties={ "type": "partial" ,"epoque": "partial","latitude": "exact","longitude": "exact"})
  */
 class ServiceDesMonuments
 {
@@ -85,6 +90,16 @@ class ServiceDesMonuments
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="serviceDesMonuments")
      */
     private $reservations;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $latitude;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $longitude;
 
 
 
@@ -244,6 +259,30 @@ class ServiceDesMonuments
                 $reservation->setServiceDesMonuments(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLatitude(): ?float
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(?float $latitude): self
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?float
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(?float $longitude): self
+    {
+        $this->longitude = $longitude;
 
         return $this;
     }

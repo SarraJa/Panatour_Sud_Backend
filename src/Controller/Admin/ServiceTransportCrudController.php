@@ -10,6 +10,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
@@ -42,7 +44,10 @@ class ServiceTransportCrudController extends AbstractCrudController
             TextField::new('libele'),
             TextField::new('type'),
             TextField::new('adresse'),
-            TextField::new('description'),
+            NumberField::new('latitude'),
+            NumberField::new('longitude'),
+            AssociationField::new('lieuInteret'),
+            TextareaField::new('description'),
             MoneyField::new('prix')->setCurrency('TND'),
             DateTimeField::new('CreatedAt'),
             CollectionField::new('images')
@@ -53,6 +58,7 @@ class ServiceTransportCrudController extends AbstractCrudController
         
              CollectionField::new('images')->onlyOnDetail()->setTemplatePath('images.html.twig'),
              AssociationField::new('reservations')->onlyOnDetail(),
+
     
 
             // FieldCollectionField::new('imageFile')->setEntryType(ServiceTransportImageType::class)->onlyOnForms(),
@@ -66,6 +72,8 @@ class ServiceTransportCrudController extends AbstractCrudController
         return $filters
             ->add('adresse')
             ->add('type')
+            ->add('latitude')
+            ->add('longitude')
             
         ;
     }

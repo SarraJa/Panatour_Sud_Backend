@@ -3,6 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\LieuInteret;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
@@ -36,12 +39,17 @@ class LieuInteretCrudController extends AbstractCrudController
             IntegerField::new('score'),
             DateTimeField::new('CreatedAt'),
             AssociationField::new('clients'),
-            AssociationField::new('ServiceTransport'),
-            AssociationField::new('ServiceRestauration'),
-            AssociationField::new('ServiceHotelier'),
+            AssociationField::new('ServiceTransport')->onlyOnDetail(),
+            AssociationField::new('ServiceRestauration')->onlyOnDetail(),
+            AssociationField::new('ServiceHotelier')->onlyOnDetail(),
             AssociationField::new('reclamation'),
         ];
     
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions->add(Crud::PAGE_INDEX, Action::DETAIL);
     }
     
 }

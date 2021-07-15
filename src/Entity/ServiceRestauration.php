@@ -35,8 +35,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  * )
  * @ORM\Entity(repositoryClass=ServiceRestaurationRepository::class)
  * @Vich\Uploadable
- * @ApiFilter(SearchFilter::class, properties={ "adresse": "partial"})
- * @ApiFilter(SearchFilter::class, properties={ "type": "partial"})
+ * @ApiFilter(SearchFilter::class, properties={ "type": "partial","adresse": "partial","latitude": "exact","longitude": "exact"})
  */
 class ServiceRestauration
 {
@@ -87,6 +86,16 @@ class ServiceRestauration
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="ServiceRestauration",cascade={"persist","remove"})
      */
     public $images;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $latitude;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $longitude;
 
     public function __construct()
     {
@@ -247,6 +256,30 @@ class ServiceRestauration
                 $image->setServiceRestauration(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLatitude(): ?float
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(?float $latitude): self
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?float
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(?float $longitude): self
+    {
+        $this->longitude = $longitude;
 
         return $this;
     }

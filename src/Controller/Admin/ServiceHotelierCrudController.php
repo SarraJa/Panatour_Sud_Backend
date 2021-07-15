@@ -7,11 +7,14 @@ use App\Form\ImageFormType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
@@ -39,7 +42,10 @@ class ServiceHotelierCrudController extends AbstractCrudController
             TextField::new('libele'),
             TextField::new('type'),
             TextField::new('adresse'),
-            TextField::new('description'),
+            NumberField::new('latitude'),
+            NumberField::new('longitude'),
+            AssociationField::new('lieuInteret'),
+            TextareaField::new('description'),
             MoneyField::new('prix')->setCurrency('TND'),
             DateTimeField::new('CreatedAt'),
             //TextField::new('imageFile',"Image  ")->setFormType(VichImageType::class)->onlyWhenCreating(),
@@ -58,6 +64,8 @@ class ServiceHotelierCrudController extends AbstractCrudController
         return $filters
             ->add('adresse')
             ->add('type')
+            ->add('latitude')
+            ->add('longitude')
             
         ;
     }

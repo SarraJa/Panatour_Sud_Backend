@@ -11,6 +11,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -38,7 +40,10 @@ class ServiceRestaurationCrudController extends AbstractCrudController
             TextField::new('libele'),
             //TextField::new('type'),
             TextField::new('adresse'),
-            TextField::new('description'),
+            NumberField::new('latitude'),
+            NumberField::new('longitude'),
+            AssociationField::new('lieuInteret'),
+            TextareaField::new('description'),
             MoneyField::new('prix')->setCurrency('TND'),
             DateTimeField::new('CreatedAt'),
            
@@ -59,6 +64,8 @@ class ServiceRestaurationCrudController extends AbstractCrudController
     {
         return $filters
             ->add('adresse')
+            ->add('latitude')
+            ->add('longitude')
            
             
         ;
