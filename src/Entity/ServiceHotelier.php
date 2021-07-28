@@ -17,7 +17,14 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  * @ApiResource(
  *   collectionOperations={
  *     "get"={},
- *     "post"={},
+ *
+ *     "createservice"={
+ *        "method"="POST",
+ *        "path"="/service_hoteliers",
+ *        "description"= "new service",
+ *        "controller"="App\Controller\ServiceHotelierController::add"
+ *     },
+ *
  *
  *     },
  *     itemOperations={

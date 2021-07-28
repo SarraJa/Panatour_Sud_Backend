@@ -24,7 +24,7 @@ class Image
      */
     private $id;
 
-    
+
     /**
      * @ORM\Column(type="string" ,length=255)
      *
@@ -40,7 +40,7 @@ class Image
      *     }
      * )
      * @Vich\UploadableField(mapping="service_images", fileNameProperty="file")
-     * 
+     *
      * @var File
      */
     public $imageFile;
@@ -65,18 +65,32 @@ class Image
      */
     private $serviceDesMonuments;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $urlDrive;
 
-    
+
+
     public function getImageFile(): ?File
     {
         return $this->imageFile;
     }
 
-    public function setImageFile(File $image = null)
+    /* public function setImageFile(File $image = null)
+     {
+         $this->imageFile = $image;
+     }*/
+    /**
+     * @param null|File $imageFile
+     * @return Image
+     */
+    public function setImageFile(?File $imageFile): Image
     {
-        $this->imageFile = $image;
-    }
+        $this->imageFile = $imageFile;
 
+        return $this;
+    }
     public function getFile(): ?string
     {
         return $this->file;
@@ -141,9 +155,21 @@ class Image
         return $this;
     }
 
+    public function getUrlDrive(): ?string
+    {
+        return $this->urlDrive;
+    }
 
+   /* public function setUrlDrive(?string $urlDrive): self
+    {
+        $this->urlDrive = $urlDrive;
+
+        return $this;
+    }*/
 
 
 
     
+
+
 }

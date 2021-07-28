@@ -51,12 +51,12 @@ class ServiceHotelierCrudController extends AbstractCrudController
             //TextField::new('imageFile',"Image  ")->setFormType(VichImageType::class)->onlyWhenCreating(),
             CollectionField::new('images')
                 ->setEntryType(ImageFormType::class)
-                ->setFormTypeOption('by_reference',false)
-                ->onlyOnForms(),
-               
+                ->setFormTypeOption('by_reference',false),
+
+
             
             CollectionField::new('images')->onlyOnDetail()->setTemplatePath('images.html.twig'),
-            //ImageField::new('file')->setBasePath('/uploads/imageservices/')->onlyOnIndex()
+            //ImageField::new('images')->onlyOnDetail(),
         ];
     }
     public function configureFilters(Filters $filters): Filters

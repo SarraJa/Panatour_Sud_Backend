@@ -14,6 +14,7 @@ class ImageFormType extends AbstractType
     {
         $builder
             ->add('imageFile',VichFileType::class)
+            ->add('urlDrive')
             
         ;
     }

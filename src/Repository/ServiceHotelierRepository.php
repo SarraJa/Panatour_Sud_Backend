@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\ServiceHotelier;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @method ServiceHotelier|null find($id, $lockMode = null, $lockVersion = null)
@@ -14,10 +15,15 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ServiceHotelierRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    private $manager;
+    public function __construct(ManagerRegistry $registry,EntityManagerInterface $manager)
     {
         parent::__construct($registry, ServiceHotelier::class);
+        $this->manager = $manager;
     }
+
+
+
 
     // /**
     //  * @return ServiceHotelier[] Returns an array of ServiceHotelier objects
@@ -35,6 +41,19 @@ class ServiceHotelierRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function saveHotel($libele, $adresse, $type, $prix)
+    {
+        $newHotel = new ServiceHotelier();
+
+        $newHotel
+            ->setLibele($libele)
+            ->setAdresse($adresse)
+            ->setType($type)
+            ->setPrix($prix);
+
+        $this->manager->persist($newHotel);
+        $this->manager->flush();
+    }
 
 
     public function findOneBySomeField($value): ?ServiceHotelier
