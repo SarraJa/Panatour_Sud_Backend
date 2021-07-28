@@ -160,16 +160,16 @@ class Image
         return $this->urlDrive;
     }
 
-   /* public function setUrlDrive(?string $urlDrive): self
+    public function setUrlDrive(?string $urlDrive): self
     {
         $this->urlDrive = $urlDrive;
 
         return $this;
-    }*/
+    }
 
 
 
-    
+
 
 
 }
