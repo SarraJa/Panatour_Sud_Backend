@@ -49,8 +49,7 @@ class ServiceRestaurationCrudController extends AbstractCrudController
            
             CollectionField::new('images')
                 ->setEntryType(ImageFormType::class)
-                ->setFormTypeOption('by_reference',false)
-                ->onlyOnForms(),
+                ->setFormTypeOption('by_reference',false),
                
             
             CollectionField::new('images')->onlyOnDetail()->setTemplatePath('images.html.twig'),
