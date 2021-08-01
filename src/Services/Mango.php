@@ -101,13 +101,13 @@ class Mango
     }*/
 
 
-    public function CreateWallet(String $currency,String $name)
+    public function CreateWallet(String $currency,String $name,String $idowner)
     {
         try
         {
             // claims wallets in ADMIN USER ACCOUNT
             $Wallet = new Wallet();
-            $Wallet->Owners = array('112609380');
+            $Wallet->Owners = $idowner;
             $Wallet->Description = $name;
             $Wallet->Currency = $currency;
             $Wallet = $this->mangoPayApi->Wallets->Create($Wallet);
