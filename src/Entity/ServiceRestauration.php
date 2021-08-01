@@ -35,7 +35,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  * )
  * @ORM\Entity(repositoryClass=ServiceRestaurationRepository::class)
  * @Vich\Uploadable
- * @ApiFilter(SearchFilter::class, properties={ "type": "partial","adresse": "partial","latitude": "exact","longitude": "exact"})
+ * @ApiFilter(SearchFilter::class, properties={ "lieuInteret": "exact","type": "partial","adresse": "partial","latitude": "exact","longitude": "exact","adresse": "exact"})
  */
 class ServiceRestauration
 {
@@ -96,6 +96,11 @@ class ServiceRestauration
      * @ORM\Column(type="float", nullable=true)
      */
     private $longitude;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $walletId;
 
     public function __construct()
     {
@@ -280,6 +285,18 @@ class ServiceRestauration
     public function setLongitude(?float $longitude): self
     {
         $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getWalletId(): ?string
+    {
+        return $this->walletId;
+    }
+
+    public function setWalletId(?string $walletId): self
+    {
+        $this->walletId = $walletId;
 
         return $this;
     }

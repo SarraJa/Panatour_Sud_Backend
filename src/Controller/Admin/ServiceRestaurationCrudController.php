@@ -46,7 +46,9 @@ class ServiceRestaurationCrudController extends AbstractCrudController
             TextareaField::new('description'),
             MoneyField::new('prix')->setCurrency('TND'),
             DateTimeField::new('CreatedAt'),
-           
+            TextField::new('walletId'),
+
+
             CollectionField::new('images')
                 ->setEntryType(ImageFormType::class)
                 ->setFormTypeOption('by_reference',false),

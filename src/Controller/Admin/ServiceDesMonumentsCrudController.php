@@ -32,6 +32,7 @@ class ServiceDesMonumentsCrudController extends AbstractCrudController
     {
         return [
             IdField::new('Id')->onlyOnIndex(),
+
             TextField::new('epoque'),
             TextareaField::new('description'),
             TextField::new('libele'),
@@ -42,6 +43,7 @@ class ServiceDesMonumentsCrudController extends AbstractCrudController
 
             DateTimeField::new('CreatedAt'),
             TextField::new('type'),
+            TextField::new('walletId'),
 
            // MoneyField::new('prix')->setCurrency('TND'),
             //TextField::new('imageFile',"Image  ")->setFormType(VichImageType::class)->onlyWhenCreating(),

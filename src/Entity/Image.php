@@ -7,11 +7,47 @@ use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ApiResource()
+@ApiResource(normalizationContext={
+ *         "groups"={"media_object_read"}
+ *     },
+ *     collectionOperations={
+ *         "post"={
+ *             "controller"=CreateMediaObjectAction::class,
+ *             "validation_groups"={"Default", "media_object_create"},
+ *              "deserialize"=false,
+ *             "openapi_context"={
+ *                 "requestBody"={
+ *                     "content"={
+ *                         "multipart/form-data"={
+ *                             "schema"={
+ *                                 "type"="object",
+ *                                 "properties"={
+ *                                     "imageFile"={
+ *                                         "type"="string",
+ *                                         "format"="binary"
+ *                                     }
+ *                                 }
+ *                             }
+ *                         }
+ *                     }
+ *                 }
+ *             }
+ *         },
+ *         "get"={
+ *          "normalization_context"={"groups"={"reponse"}},
+ *     }
+ *     },
+ *     itemOperations={
+ *         "get"={
+ *          "normalization_context"={"groups"={"reponse"}},
+ *     }
+ *     }
+ * )
  * @ORM\Entity(repositoryClass=ImageRepository::class)
  * @Vich\Uploadable
  */

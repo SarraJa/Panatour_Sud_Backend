@@ -42,7 +42,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  * )
  * @ORM\Entity(repositoryClass=ServiceHotelierRepository::class)
  * @Vich\Uploadable
- * @ApiFilter(SearchFilter::class, properties={ "type": "partial","adresse": "partial","latitude": "exact","longitude": "exact"})
+ * @ApiFilter(SearchFilter::class, properties={ "lieuInteret": "partial","type": "partial","adresse": "partial","latitude": "exact","longitude": "exact","adresse": "exact"})
  */
 class ServiceHotelier
 {
@@ -112,6 +112,13 @@ class ServiceHotelier
      * @ORM\Column(type="float", nullable=true)
      */
     private $longitude;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $etoiles;
+
+
 
 
 
@@ -410,6 +417,21 @@ class ServiceHotelier
 
         return $this;
     }
+
+    public function getEtoiles(): ?string
+    {
+        return $this->etoiles;
+    }
+
+    public function setEtoiles(?string $etoiles): self
+    {
+        $this->etoiles = $etoiles;
+
+        return $this;
+    }
+
+
+
 
 
 

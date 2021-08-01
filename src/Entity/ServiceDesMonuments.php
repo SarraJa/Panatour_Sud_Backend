@@ -35,7 +35,7 @@ use DateTime;
  * )
  * @ORM\Entity(repositoryClass=ServiceDesMonumentsRepository::class)
  * @Vich\Uploadable
- * @ApiFilter(SearchFilter::class, properties={ "type": "partial" ,"epoque": "partial","latitude": "exact","longitude": "exact"})
+ * @ApiFilter(SearchFilter::class, properties={ "lieuInteret": "exact","type": "partial" ,"epoque": "partial","latitude": "exact","longitude": "exact","adresse": "exact"})
  */
 class ServiceDesMonuments
 {
@@ -100,6 +100,11 @@ class ServiceDesMonuments
      * @ORM\Column(type="float", nullable=true)
      */
     private $longitude;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $walletId;
 
 
 
@@ -283,6 +288,18 @@ class ServiceDesMonuments
     public function setLongitude(?float $longitude): self
     {
         $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getWalletId(): ?string
+    {
+        return $this->walletId;
+    }
+
+    public function setWalletId(?string $walletId): self
+    {
+        $this->walletId = $walletId;
 
         return $this;
     }

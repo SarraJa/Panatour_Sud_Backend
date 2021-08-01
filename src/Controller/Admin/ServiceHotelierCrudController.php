@@ -39,6 +39,7 @@ class ServiceHotelierCrudController extends AbstractCrudController
     {
         return [
             IdField::new('Id')->onlyOnIndex(),
+
             TextField::new('libele'),
             TextField::new('type'),
             TextField::new('adresse'),
@@ -46,8 +47,10 @@ class ServiceHotelierCrudController extends AbstractCrudController
             NumberField::new('longitude'),
             AssociationField::new('lieuInteret'),
             TextareaField::new('description'),
+            TextField::new('etoiles'),
             MoneyField::new('prix')->setCurrency('TND'),
             DateTimeField::new('CreatedAt'),
+            TextField::new('walletId'),
             //TextField::new('imageFile',"Image  ")->setFormType(VichImageType::class)->onlyWhenCreating(),
             CollectionField::new('images')
                 ->setEntryType(ImageFormType::class)
