@@ -26,7 +26,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *        "method"="POST",
  *        "path"="/service_restaurations/{id}/wallet",
  *        "description"= "get transaction details",
- *        "controller"="App\Controller\MangoUserController::createWallet"
+ *        "controller"="App\Controller\MangoUserController::createWalletResto"
  *     },
  *
  *     "put"={},

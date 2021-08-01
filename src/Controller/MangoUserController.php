@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Reservation;
+use App\Entity\ServiceDesMonuments;
 use App\Entity\ServiceHotelier;
+use App\Entity\ServiceRestauration;
+use App\Entity\ServiceTransport;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -116,7 +119,7 @@ class MangoUserController extends AbstractController
         );
     }
 
-    public function createWallet(Request $request){
+    public function createWalletHotel(Request $request){
         $data = json_decode(
             $request->getContent(),
             true
@@ -124,6 +127,72 @@ class MangoUserController extends AbstractController
         $routeParameters = $request->attributes->get('_route_params');
         $rec=$this->getDoctrine()
             ->getRepository(ServiceHotelier::class)
+            ->findOneBySomeField($routeParameters['id']);
+        // var_dump($data['name'].$data['currency']);
+        if ($request->getMethod() == 'POST') {
+            $response=$this->serviceHandler->CreateWallet($data['currency'],$data['name'],$data['idowner']);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($rec);
+            $rec->setWalletId($response);
+            $entityManager->flush();
+            return new JsonResponse(
+                $response,
+                JsonResponse::HTTP_CREATED
+            );
+        }
+    }
+    public function createWalletResto(Request $request){
+        $data = json_decode(
+            $request->getContent(),
+            true
+        );
+        $routeParameters = $request->attributes->get('_route_params');
+        $rec=$this->getDoctrine()
+            ->getRepository(ServiceRestauration::class)
+            ->findOneBySomeField($routeParameters['id']);
+        // var_dump($data['name'].$data['currency']);
+        if ($request->getMethod() == 'POST') {
+            $response=$this->serviceHandler->CreateWallet($data['currency'],$data['name'],$data['idowner']);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($rec);
+            $rec->setWalletId($response);
+            $entityManager->flush();
+            return new JsonResponse(
+                $response,
+                JsonResponse::HTTP_CREATED
+            );
+        }
+    }
+    public function createWalletTransport(Request $request){
+        $data = json_decode(
+            $request->getContent(),
+            true
+        );
+        $routeParameters = $request->attributes->get('_route_params');
+        $rec=$this->getDoctrine()
+            ->getRepository(ServiceTransport::class)
+            ->findOneBySomeField($routeParameters['id']);
+        // var_dump($data['name'].$data['currency']);
+        if ($request->getMethod() == 'POST') {
+            $response=$this->serviceHandler->CreateWallet($data['currency'],$data['name'],$data['idowner']);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($rec);
+            $rec->setWalletId($response);
+            $entityManager->flush();
+            return new JsonResponse(
+                $response,
+                JsonResponse::HTTP_CREATED
+            );
+        }
+    }
+    public function createWalletMonumentes(Request $request){
+        $data = json_decode(
+            $request->getContent(),
+            true
+        );
+        $routeParameters = $request->attributes->get('_route_params');
+        $rec=$this->getDoctrine()
+            ->getRepository(ServiceDesMonuments::class)
             ->findOneBySomeField($routeParameters['id']);
         // var_dump($data['name'].$data['currency']);
         if ($request->getMethod() == 'POST') {

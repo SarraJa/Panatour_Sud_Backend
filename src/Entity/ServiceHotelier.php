@@ -33,7 +33,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *        "method"="POST",
  *        "path"="/service_hoteliers/{id}/wallet",
  *        "description"= "get transaction details",
- *        "controller"="App\Controller\MangoUserController::createWallet"
+ *        "controller"="App\Controller\MangoUserController::createWalletHotel"
  *     },
  *
  *     "put"={},
