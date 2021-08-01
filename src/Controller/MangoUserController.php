@@ -127,7 +127,7 @@ class MangoUserController extends AbstractController
             ->findOneBySomeField($routeParameters['id']);
         // var_dump($data['name'].$data['currency']);
         if ($request->getMethod() == 'POST') {
-            $response=$this->serviceHandler->CreateWallet($data['currency'],$data['name']);
+            $response=$this->serviceHandler->CreateWallet($data['currency'],$data['name'],$data['idowner']);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($rec);
             $rec->setWalletId($response);
