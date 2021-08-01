@@ -24,7 +24,7 @@ use DateTime;
  *      "get"={},
  *     "createWallet"={
  *        "method"="POST",
- *        "path"="/servicesdesmonuments/{id}/wallet",
+ *        "path"="/service_des_monuments/{id}/wallet",
  *        "description"= "get transaction details",
  *        "controller"="App\Controller\MangoUserController::createWallet"
  *     },

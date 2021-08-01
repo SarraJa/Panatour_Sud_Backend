@@ -24,7 +24,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *      "get"={},
  *     "createWallet"={
  *        "method"="POST",
- *        "path"="/servicetransport/{id}/wallet",
+ *        "path"="/service_transports/{id}/wallet",
  *        "description"= "get transaction details",
  *        "controller"="App\Controller\MangoUserController::createWallet"
  *     },
