@@ -107,7 +107,7 @@ class Mango
         {
             // claims wallets in ADMIN USER ACCOUNT
             $Wallet = new Wallet();
-            $Wallet->Owners = $idowner;
+            $Wallet->Owners = array($idowner);
             $Wallet->Description = $name;
             $Wallet->Currency = $currency;
             $Wallet = $this->mangoPayApi->Wallets->Create($Wallet);
