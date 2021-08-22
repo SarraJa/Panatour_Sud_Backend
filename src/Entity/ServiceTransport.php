@@ -67,7 +67,7 @@ class ServiceTransport
     private $description;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $prix;
 
@@ -92,12 +92,12 @@ class ServiceTransport
     private $images;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $latitude;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $longitude;
 
@@ -172,12 +172,12 @@ class ServiceTransport
         return $this;
     }
 
-    public function getPrix(): ?float
+    public function getPrix(): ?string
     {
         return $this->prix;
     }
 
-    public function setPrix(?float $prix): self
+    public function setPrix(?string $prix): self
     {
         $this->prix = $prix;
 
@@ -227,7 +227,7 @@ class ServiceTransport
     }
 
     public function __toString() {
-        return $this->libele;
+        return (string)$this->libele;
     }
 
     public function getLieuInteret(): ?LieuInteret
@@ -280,24 +280,24 @@ class ServiceTransport
         $this->images = $images;
     }
 
-    public function getLatitude(): ?float
+    public function getLatitude(): ?string
     {
         return $this->latitude;
     }
 
-    public function setLatitude(?float $latitude): self
+    public function setLatitude(?string $latitude): self
     {
         $this->latitude = $latitude;
 
         return $this;
     }
 
-    public function getLongitude(): ?float
+    public function getLongitude(): ?string
     {
         return $this->longitude;
     }
 
-    public function setLongitude(?float $longitude): self
+    public function setLongitude(?string $longitude): self
     {
         $this->longitude = $longitude;
 

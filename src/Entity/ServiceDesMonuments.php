@@ -92,12 +92,12 @@ class ServiceDesMonuments
     private $reservations;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $latitude;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $longitude;
 
@@ -268,24 +268,24 @@ class ServiceDesMonuments
         return $this;
     }
 
-    public function getLatitude(): ?float
+    public function getLatitude(): ?string
     {
         return $this->latitude;
     }
 
-    public function setLatitude(?float $latitude): self
+    public function setLatitude(?string $latitude): self
     {
         $this->latitude = $latitude;
 
         return $this;
     }
 
-    public function getLongitude(): ?float
+    public function getLongitude(): ?string
     {
         return $this->longitude;
     }
 
-    public function setLongitude(?float $longitude): self
+    public function setLongitude(?string $longitude): self
     {
         $this->longitude = $longitude;
 
@@ -302,6 +302,10 @@ class ServiceDesMonuments
         $this->walletId = $walletId;
 
         return $this;
+    }
+
+    public function __toString() {
+        return (string)$this->libele;
     }
 
 

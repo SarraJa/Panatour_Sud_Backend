@@ -207,6 +207,7 @@ class MangoUserController extends AbstractController
             );
         }
     }
+
     public function CreateUserPayment(Request $request){
         $userInterface = $this->security->getUser();
         $routeParameters = $request->attributes->get('_route_params');

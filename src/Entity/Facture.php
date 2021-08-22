@@ -27,7 +27,7 @@ class Facture
     private $description;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $prixTotal;
 
@@ -65,12 +65,12 @@ class Facture
         return $this;
     }
 
-    public function getPrixTotal(): ?float
+    public function getPrixTotal(): ?string
     {
         return $this->prixTotal;
     }
 
-    public function setPrixTotal(?float $prixTotal): self
+    public function setPrixTotal(?string $prixTotal): self
     {
         $this->prixTotal = $prixTotal;
 

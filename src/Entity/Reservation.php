@@ -48,12 +48,12 @@ class Reservation
     private $id;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $dateReservation;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $duree;
 
@@ -88,27 +88,27 @@ class Reservation
     private $serviceRestauration;
 
      /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $nombreChamber;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $nombreAdulte;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $nombreEnfant;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $checkIn;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $checkOut;
 
@@ -128,14 +128,24 @@ class Reservation
     private $codeReservation;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $status;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $montantPaiment;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nbrPersonnes;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nbrTables;
 
 
 
@@ -259,60 +269,60 @@ class Reservation
         return $this;
     }
 
-    public function getNombreChamber(): ?int
+    public function getNombreChamber(): ?string
     {
         return $this->nombreChamber;
     }
 
-    public function setNombreChamber(?int $nombreChamber): self
+    public function setNombreChamber(?string $nombreChamber): self
     {
         $this->nombreChamber = $nombreChamber;
 
         return $this;
     }
 
-    public function getNombreAdulte(): ?int
+    public function getNombreAdulte(): ?string
     {
         return $this->nombreAdulte;
     }
 
-    public function setNombreAdulte(?int $nombreAdulte): self
+    public function setNombreAdulte(?string $nombreAdulte): self
     {
         $this->nombreAdulte = $nombreAdulte;
 
         return $this;
     }
 
-    public function getNombreEnfant(): ?int
+    public function getNombreEnfant(): ?string
     {
         return $this->nombreEnfant;
     }
 
-    public function setNombreEnfant(?int $nombreEnfant): self
+    public function setNombreEnfant(?string $nombreEnfant): self
     {
         $this->nombreEnfant = $nombreEnfant;
 
         return $this;
     }
 
-    public function getCheckIn(): ?\DateTimeInterface
+    public function getCheckIn(): ?string
     {
         return $this->checkIn;
     }
 
-    public function setCheckIn(?\DateTimeInterface $checkIn): self
+    public function setCheckIn(?string $checkIn): self
     {
         $this->checkIn = $checkIn;
 
         return $this;
     }
 
-    public function getCheckOut(): ?\DateTimeInterface
+    public function getCheckOut(): ?string
     {
         return $this->checkOut;
     }
 
-    public function setCheckOut(?\DateTimeInterface $checkOut): self
+    public function setCheckOut(?string $checkOut): self
     {
         $this->checkOut = $checkOut;
 
@@ -378,6 +388,30 @@ class Reservation
     public function setMontantPaiment(?float $montantPaiment): self
     {
         $this->montantPaiment = $montantPaiment;
+
+        return $this;
+    }
+
+    public function getNbrPersonnes(): ?string
+    {
+        return $this->nbrPersonnes;
+    }
+
+    public function setNbrPersonnes(?string $nbrPersonnes): self
+    {
+        $this->nbrPersonnes = $nbrPersonnes;
+
+        return $this;
+    }
+
+    public function getNbrTables(): ?string
+    {
+        return $this->nbrTables;
+    }
+
+    public function setNbrTables(?string $nbrTables): self
+    {
+        $this->nbrTables = $nbrTables;
 
         return $this;
     }

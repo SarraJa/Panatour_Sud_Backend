@@ -40,8 +40,8 @@ class ServiceRestaurationCrudController extends AbstractCrudController
             TextField::new('libele'),
             //TextField::new('type'),
             TextField::new('adresse'),
-            NumberField::new('latitude'),
-            NumberField::new('longitude'),
+            TextField::new('latitude'),
+            TextField::new('longitude'),
             AssociationField::new('lieuInteret'),
             TextareaField::new('description'),
             MoneyField::new('prix')->setCurrency('TND'),
@@ -55,7 +55,7 @@ class ServiceRestaurationCrudController extends AbstractCrudController
                
             
             CollectionField::new('images')->onlyOnDetail()->setTemplatePath('images.html.twig'),
-            AssociationField::new('reservations'),
+            AssociationField::new('reservations')->onlyOnDetail()
              //TextField::new('imageFile',"Image  ")->setFormType(VichImageType::class)->onlyWhenCreating(),
             //ImageField::new('file')->setBasePath('/uploads/imageservices/')->onlyOnIndex()
         ];

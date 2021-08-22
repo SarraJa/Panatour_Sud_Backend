@@ -39,17 +39,19 @@ class ReservationCrudController extends AbstractCrudController
         return [
             
             TextField::new('duree'),
-            DateTimeField::new('dateReservation'),
+            TextField::new('dateReservation'),
         // CollectionField::new('client')->setEntryType(ClientTypeFormType::class)
            AssociationField::new('client'),
            AssociationField::new('serviceTransport'),
            AssociationField::new('serviceHotelier'),
            AssociationField::new('serviceRestauration'),
-           IntegerField::new('nombreChamber'),
-           IntegerField::new('nombreAdulte'),
-           IntegerField::new('nombreEnfant'),
-           DateTimeField::new('checkIn'),
-           DateTimeField::new('checkOut'),
+            TextField::new('nombreChamber'),
+            TextField::new('nombreAdulte'),
+            TextField::new('nombreEnfant'),
+            TextField::new('nbrPersonnes','Nombre Personnes'),
+            TextField::new('nbrTables','Nombre Tables'),
+            TextField::new('checkIn','Date arrive'),
+            TextField::new('checkOut','Date Sortie'),
 
 
            

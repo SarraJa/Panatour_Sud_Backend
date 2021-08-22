@@ -72,7 +72,7 @@ class Client extends Userd
     private $prenom;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     public $dateNaissance;
 
@@ -82,12 +82,12 @@ class Client extends Userd
     private $CreatedAt;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $numeroCarte;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $numeroTelephone;
 
@@ -167,12 +167,12 @@ class Client extends Userd
         return $this;
     }
 
-    public function getDateNaissance(): ?\DateTimeInterface
+    public function getDateNaissance(): ?string
     {
         return $this->dateNaissance;
     }
 
-    public function setDateNaissance(?\DateTimeInterface $dateNaissance): self
+    public function setDateNaissance(?string $dateNaissance): self
     {
         $this->dateNaissance = $dateNaissance;
 
@@ -191,24 +191,24 @@ class Client extends Userd
         return $this;
     }
 
-    public function getNumeroCarte(): ?int
+    public function getNumeroCarte(): ?string
     {
         return $this->numeroCarte;
     }
 
-    public function setNumeroCarte(?int $numeroCarte): self
+    public function setNumeroCarte(?string $numeroCarte): self
     {
         $this->numeroCarte = $numeroCarte;
 
         return $this;
     }
 
-    public function getNumeroTelephone(): ?int
+    public function getNumeroTelephone(): ?string
     {
         return $this->numeroTelephone;
     }
 
-    public function setNumeroTelephone(?int $numeroTelephone): self
+    public function setNumeroTelephone(?string $numeroTelephone): self
     {
         $this->numeroTelephone = $numeroTelephone;
 
@@ -301,7 +301,7 @@ class Client extends Userd
     
 
     public function __toString() {
-        return $this->username;
+        return (string)$this->username;
     }
 
     public function getMangopayid(): ?string

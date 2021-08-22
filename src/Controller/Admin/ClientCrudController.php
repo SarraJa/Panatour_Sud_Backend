@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller\Admin;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -34,9 +35,10 @@ class ClientCrudController extends AbstractCrudController
             TextField::new('nom'),
             TextField::new('prenom'),
             ArrayField::new('roles'),
-            DateTimeField::new('dateNaissance'),
+            TextField::new('dateNaissance'),
             DateTimeField::new('CreatedAt'),
-            TelephoneField::new('numeroTelephone'),
+            TextField::new('numeroTelephone'),
+            AssociationField::new('reservation')->onlyOnDetail()
             //IntegerField::new('numeroCarte'),
 
         ];

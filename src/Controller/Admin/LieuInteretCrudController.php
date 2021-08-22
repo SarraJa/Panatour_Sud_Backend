@@ -34,15 +34,15 @@ class LieuInteretCrudController extends AbstractCrudController
     {
         return [
             TextField::new('gouvernerat'),
-            NumberField::new('latitude'),
-            NumberField::new('longitude'),
+            TextField::new('latitude'),
+            TextField::new('longitude'),
             IntegerField::new('score'),
             DateTimeField::new('CreatedAt'),
             AssociationField::new('clients'),
             AssociationField::new('ServiceTransport')->onlyOnDetail(),
             AssociationField::new('ServiceRestauration')->onlyOnDetail(),
             AssociationField::new('ServiceHotelier')->onlyOnDetail(),
-            AssociationField::new('reclamation'),
+            AssociationField::new('reclamation')->onlyOnDetail()
         ];
     
     }

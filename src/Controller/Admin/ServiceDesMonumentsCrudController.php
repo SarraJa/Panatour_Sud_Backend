@@ -37,8 +37,8 @@ class ServiceDesMonumentsCrudController extends AbstractCrudController
             TextareaField::new('description'),
             TextField::new('libele'),
             TextField::new('adresse'),
-            NumberField::new('latitude'),
-            NumberField::new('longitude'),
+            TextField::new('latitude'),
+            TextField::new('longitude'),
             AssociationField::new('lieuInteret'),
 
             DateTimeField::new('CreatedAt'),
