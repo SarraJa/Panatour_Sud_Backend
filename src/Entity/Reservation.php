@@ -163,12 +163,12 @@ class Reservation
         return $this->id;
     }
 
-    public function getDateReservation(): ?\DateTimeInterface
+    public function getDateReservation(): ?string
     {
         return $this->dateReservation;
     }
 
-    public function setDateReservation(?\DateTimeInterface $dateReservation): self
+    public function setDateReservation(?string $dateReservation): self
     {
         $this->dateReservation = $dateReservation;
 
