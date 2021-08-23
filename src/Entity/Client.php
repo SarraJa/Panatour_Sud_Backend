@@ -11,9 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 use DateTime;
 
-
 /**
  *@ApiResource(
+ *
  *   collectionOperations={
  *     "get"={},
  *     "post"={},

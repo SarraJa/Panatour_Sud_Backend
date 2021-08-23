@@ -38,7 +38,7 @@ class ReservationCrudController extends AbstractCrudController
                      
         return [
             
-            TextField::new('duree'),
+
             TextField::new('dateReservation'),
         // CollectionField::new('client')->setEntryType(ClientTypeFormType::class)
            AssociationField::new('client'),

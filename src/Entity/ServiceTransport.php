@@ -15,12 +15,12 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ApiResource(
- *   collectionOperations={
+ *    collectionOperations={
  *     "get"={},
  *     "post"={},
  *
  *     },
- *     itemOperations={
+ *    itemOperations={
  *      "get"={},
  *     "createWallet"={
  *        "method"="POST",

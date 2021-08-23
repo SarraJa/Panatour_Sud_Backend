@@ -52,12 +52,7 @@ class Reservation
      */
     private $dateReservation;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $duree;
-
-    /**
+     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $createdAt;
@@ -175,17 +170,7 @@ class Reservation
         return $this;
     }
 
-    public function getDuree(): ?int
-    {
-        return $this->duree;
-    }
 
-    public function setDuree(?int $duree): self
-    {
-        $this->duree = $duree;
-
-        return $this;
-    }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
