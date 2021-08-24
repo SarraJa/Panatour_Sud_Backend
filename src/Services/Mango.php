@@ -53,14 +53,14 @@ class Mango
      */
     public function getMangoUser(Client $user)
     {
-       // $d =new \DateTime();
+        $date =new \DateTime($user->getDateNaissance());
         
         try
         {
             $mangoUser = new \MangoPay\UserNatural();
             $mangoUser->FirstName = $user->getNom();
             $mangoUser->LastName = $user->getPrenom();
-            $mangoUser->Birthday = $user->dateNaissance->getTimestamp();
+            $mangoUser->Birthday = $date->getTimestamp();
             $mangoUser->Nationality = "TN";
             $mangoUser->CountryOfResidence = "FR";
             //$mangoUser->Email = "sarra@gmail.com";

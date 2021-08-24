@@ -35,6 +35,7 @@ class ClientCrudController extends AbstractCrudController
             TextField::new('nom'),
             TextField::new('prenom'),
             ArrayField::new('roles'),
+            TextField::new('mangopayid')->onlyOnIndex(),
             TextField::new('dateNaissance'),
             DateTimeField::new('CreatedAt'),
             TextField::new('numeroTelephone'),
